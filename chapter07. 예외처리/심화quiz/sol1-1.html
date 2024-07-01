@@ -7,11 +7,19 @@
    </head>
    <body></body>
    <script>
-      try {
-         let str = null
-         console.log(str.length) //에러발생 위치, 이유: str이 null이므로(값이 없으므로) lengt를 이용해 길이를 가져올 수 없다.
-      } catch (exception) {
-         alert('str값은 사용할 수 없습니다.')
+      function movie(age) {
+         try {
+            if (age < 18) {
+               throw 'age exception.' //예외 강제로 발생시킴
+            }
+         } catch (exception) {
+            return //예외 발생시 return문을 만나면서 movie()함수 종료 직전 finally 실행
+         } finally {
+            alert('18세 미만은 관람 불가입니다.')
+         }
       }
+
+      // 함수를 호출합니다.
+      movie(16)
    </script>
 </html>
